@@ -1,14 +1,14 @@
 --UI Lib
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
----team locals
-wait(1)
+wait(0.5)
+--Lego locals
 local plr = game.Players.LocalPlayer
 local plrname = game.Players.LocalPlayer.Name
 local vu = game:GetService("VirtualUser")
 local chara = game.Players.LocalPlayer.Character
 local hum = plr.Character.Humanoid
 local cam = game:GetService("Workspace").Camera
---// Anti-cheat bypass silme
+--// Anti-cheat Bypass
 local Players = game:GetService("Players")
 local OldNameCall = nil
 getgenv().SendNotifications = false
@@ -36,7 +36,7 @@ end)
 --Main
 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28.391758, 171.855148, -320.624664, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-local Window = Library.CreateLib("Ninja TycoonV4 [Hyago Clan]", "Sentinel")
+local Window = Library.CreateLib("Ninja TycoonV4", "Sentinel")
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("Exploits")
 Section:NewKeybind("UI Toggle", "Set keybind to toggle UI on/off", Enum.KeyCode.F1, function()

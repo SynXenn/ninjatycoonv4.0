@@ -1,6 +1,6 @@
---ui lib local
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
----------------------------------
+---team locals
+local hy_owner = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hyago Clan"].Owner
+local uchi_owner = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uchika Clan"].Owner
 wait(1)
 local plr = game.Players.LocalPlayer
 local plrname = game.Players.LocalPlayer.Name
@@ -8,7 +8,7 @@ local vu = game:GetService("VirtualUser")
 local chara = game.Players.LocalPlayer.Character
 local hum = plr.Character.Humanoid
 local cam = game:GetService("Workspace").Camera
---// Anti-cheat bypass
+--// Anti-cheat bypass silme
 local Players = game:GetService("Players")
 local OldNameCall = nil
 getgenv().SendNotifications = false
@@ -30,10 +30,11 @@ OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
     
     return OldNameCall(Self, ...)
 end)
+
+
 ---------------------------------------------------------------
---Main
----------------------
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28.391758, 171.855148, -320.624664, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28.391758, 171.855148, -320.624664, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Ninja TycoonV4 [Hyago Clan]", "Sentinel")
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("Exploits")
@@ -74,7 +75,7 @@ Section:NewToggle("Healer[OP]", "You need Tree(Heal) on your tycoon.Its basicall
       local healer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hyago Clan"].PurchasedObjects.Tree.HealingPad.TouchInterest
       while wait() do
       if _G.healer == true then
-      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, healer.Parent, 0) 
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, healer.Parent, 0) --0 is touch
       wait()
       firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, healer.Parent, 1)
       end
@@ -86,13 +87,13 @@ end)
 Section:NewButton("Teleport Base", "Teleports to base.", function()
  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(79.5542679, 180.655075, -352.40506, 0, 0, 1, 0, -1, 0, 1, 0, -0)
 end)
-Section:NewSlider("WalkSpeed", "It changes your players walkspeed", 500, 16, function(s)
+Section:NewSlider("WalkSpeed", "It changes your players walkspeed", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 end)
-Section:NewSlider("JumpPower", "It changes your players jump power", 500, 50, function(j)
+Section:NewSlider("JumpPower", "It changes your players jump power", 500, 50, function(j) -- 500 (MaxValue) | 0 (MinValue)
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = j
 end)
-Section:NewSlider("FOV", "It changes your players FOV", 120, 70, function(fw)
+Section:NewSlider("FOV", "It changes your players FOV", 120, 70, function(fw) -- 500 (MaxValue) | 0 (MinValue)
     cam.FieldOfView = fw
 end)
 Section:NewToggle("AntiAFK", "Toggle AntiAFK on/off", function(state1)
@@ -126,24 +127,34 @@ local Tab2 = Window:NewTab("Barriers")
 local Section2 = Tab2:NewSection("Exploits")
 Section2:NewLabel("Warning! If the team you are trying to delete does\nnot have a barrier the button will not work.")
 Section2:NewButton("Delete Akatsuke Barrier", "Deletes sonju team`s barrier.", function()
+local aka_kapi = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons.Akatsuke.PurchasedObjects.Gate
 local aka_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons.Akatsuke.PurchasedObjects["Roof Barrier Jutsu"].Lasers
  aka_bariyer:Destroy()
+ aka_kapi:Destroy()
 end)
 Section2:NewButton("Delete Sonju Barrier", "Deletes Sonju team`s barrier.", function()
+local senju_kapi = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Sonju Clan"].PurchasedObjects.Gate
 local senju_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Sonju Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
  senju_bariyer:Destroy()
+ senju_kapi:Destroy()
 end)
 Section2:NewButton("Delete Uchika Barrier", "Deletes Uchika team`s barrier.", function()
+local uci_kapi = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uchika Clan"].PurchasedObjects.Gate
 local uci_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uchika Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
  uci_bariyer:Destroy()
+ uci_kapi:Destroy()
 end)
 Section2:NewButton("Delete Kazeka Barrier", "Deletes Kazeka team`s barrier.", function()
+    local kaze_kapi = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Kazeka Clan"].PurchasedObjects.Gate
 local kaze_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Kazeka Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
  kaze_bariyer:Destroy()
+ kaze_kapi:Destroy()
 end)
 Section2:NewButton("Delete Otsutsushi Barrier", "Deletes Otsutsushi team`s barrier.", function()
 local otsu_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Otsutsushi Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+local otsu_kapi = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Otsutsushi Clan"].PurchasedObjects.Gate 
  otsu_bariyer:Destroy()
+ otsu_kapi:Destroy()
 end)
 Section2:NewButton("Delete Sarukobi Barrier", "Deletes sonju team`s barrier.", function()
 local saru_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Sarukobi Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
@@ -151,12 +162,15 @@ local saru_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons
 end)
 Section2:NewButton("Delete Uzumonki Barrier", "Deletes Uzumonki team`s barrier.", function()
 local uzu_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uzumonki Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+local uzu_kapi = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uzumonki Clan"].PurchasedObjects.Gate
  uzu_bariyer:Destroy()
+ uzu_kapi:Destroy()
 end)
 Section2:NewButton("Delete Hotate Barrier", "Deletes sonju team`s barrier.", function()
 local hatake_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hotate Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+local hatake_kapi = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hotate Clan"].PurchasedObjects.Gate
  hatake_bariyer:Destroy()
-end)
+ hatake_kapi:Destroy()
 local Tab3 = Window:NewTab("Remote Exploits")
 local Section3 = Tab3:NewSection("Exploits")
 Section3:NewToggle("Chidori Nagashi Spammer", "Charachter need to hold\nthe chidori nagashi if not then not work.", function(stateci)

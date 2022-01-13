@@ -1,0 +1,179 @@
+--ui lib local
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+---------------------------------
+wait(1)
+local plr = game.Players.LocalPlayer
+local plrname = game.Players.LocalPlayer.Name
+local vu = game:GetService("VirtualUser")
+local chara = game.Players.LocalPlayer.Character
+local hum = plr.Character.Humanoid
+local cam = game:GetService("Workspace").Camera
+--// Anti-cheat bypass
+local Players = game:GetService("Players")
+local OldNameCall = nil
+getgenv().SendNotifications = false
+OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
+    local NameCallMethod = getnamecallmethod()
+
+    if tostring(string.lower(NameCallMethod)) == "kick" then
+        if getgenv().SendNotifications == true then
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Anti-Cheat Bypass",
+                Text = "Kick Stopped",
+                Icon = "rbxassetid://6238540373",
+                Duration = 3,
+            })
+        end
+        
+        return nil
+    end
+    
+    return OldNameCall(Self, ...)
+end)
+---------------------------------------------------------------
+--Main
+---------------------
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28.391758, 171.855148, -320.624664, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+local Window = Library.CreateLib("Ninja TycoonV4 [Hyago Clan]", "Sentinel")
+local Tab = Window:NewTab("Misc")
+local Section = Tab:NewSection("Exploits")
+Section:NewKeybind("UI Toggle", "Set keybind to toggle UI on/off", Enum.KeyCode.F1, function()
+	Library:ToggleUI()
+end)
+Section:NewToggle("Auto Click", "Toggle Auto Clicker on/off", function(state)
+    if state then
+        local hy_clicker = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hyago Clan"].PurchasedObjects.Mine.Clicker.ClickDetector
+        _G.autoclicker = true
+      while wait() do
+      if _G.autoclicker == true then
+      fireclickdetector(hy_clicker)
+      end
+      end
+    else
+       _G.autoclicker = false
+    end
+end)
+Section:NewToggle("Auto Take Money", "Toggle Auto Take Money on/off", function(statee)
+    if statee then
+        _G.automoney = true
+        local hy_moneygiver = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hyago Clan"].Essentials.Giver.TouchInterest
+      while wait(1) do
+      if _G.automoney == true then
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, hy_moneygiver.Parent, 0) --0 is touch
+      wait()
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, hy_moneygiver.Parent, 1)
+      end
+      end
+    else
+       _G.automoney = false
+    end
+end)
+Section:NewToggle("Healer[OP]", "You need Tree(Heal) on your tycoon.Its basically like\ngod mode its regen your health in very short time.Toggle Healer on/off", function(stateee)
+    if stateee then
+        _G.healer = true
+      local healer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hyago Clan"].PurchasedObjects.Tree.HealingPad.TouchInterest
+      while wait() do
+      if _G.healer == true then
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, healer.Parent, 0) 
+      wait()
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, healer.Parent, 1)
+      end
+      end
+    else
+       _G.healer = false
+    end
+end)
+Section:NewButton("Teleport Base", "Teleports to base.", function()
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(79.5542679, 180.655075, -352.40506, 0, 0, 1, 0, -1, 0, 1, 0, -0)
+end)
+Section:NewSlider("WalkSpeed", "It changes your players walkspeed", 500, 16, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+Section:NewSlider("JumpPower", "It changes your players jump power", 500, 50, function(j)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = j
+end)
+Section:NewSlider("FOV", "It changes your players FOV", 120, 70, function(fw)
+    cam.FieldOfView = fw
+end)
+Section:NewToggle("AntiAFK", "Toggle AntiAFK on/off", function(state1)
+    if state1 then
+        _G.antiafk = true
+      while wait(1) do
+      if _G.antiafk == true then
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    print("AntiAfk on")
+    end)
+    end
+      end
+    else
+       _G.antiafk = false
+       print("AntiAfk off")
+    end
+end)
+Section:NewButton("[DONT RECCOMEND]Fire All TouchInterests", "Basically Fires All TouchInterests.Dont spam.", function()
+      for _,v in pairs(workspace:GetDescendants()) do
+if v:IsA("TouchTransmitter") then
+firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
+wait()
+firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
+end
+end
+end)
+local Tab2 = Window:NewTab("Barriers")
+local Section2 = Tab2:NewSection("Exploits")
+Section2:NewLabel("Warning! If the team you are trying to delete does\nnot have a barrier the button will not work.")
+Section2:NewButton("Delete Akatsuke Barrier", "Deletes sonju team`s barrier.", function()
+local aka_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons.Akatsuke.PurchasedObjects["Roof Barrier Jutsu"].Lasers
+ aka_bariyer:Destroy()
+end)
+Section2:NewButton("Delete Sonju Barrier", "Deletes Sonju team`s barrier.", function()
+local senju_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Sonju Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+ senju_bariyer:Destroy()
+end)
+Section2:NewButton("Delete Uchika Barrier", "Deletes Uchika team`s barrier.", function()
+local uci_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uchika Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+ uci_bariyer:Destroy()
+end)
+Section2:NewButton("Delete Kazeka Barrier", "Deletes Kazeka team`s barrier.", function()
+local kaze_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Kazeka Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+ kaze_bariyer:Destroy()
+end)
+Section2:NewButton("Delete Otsutsushi Barrier", "Deletes Otsutsushi team`s barrier.", function()
+local otsu_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Otsutsushi Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+ otsu_bariyer:Destroy()
+end)
+Section2:NewButton("Delete Sarukobi Barrier", "Deletes sonju team`s barrier.", function()
+local saru_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Sarukobi Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+ saru_bariyer:Destroy()
+end)
+Section2:NewButton("Delete Uzumonki Barrier", "Deletes Uzumonki team`s barrier.", function()
+local uzu_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uzumonki Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+ uzu_bariyer:Destroy()
+end)
+Section2:NewButton("Delete Hotate Barrier", "Deletes sonju team`s barrier.", function()
+local hatake_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hotate Clan"].PurchasedObjects["Roof Barrier Jutsu"].Lasers
+ hatake_bariyer:Destroy()
+end)
+local Tab3 = Window:NewTab("Remote Exploits")
+local Section3 = Tab3:NewSection("Exploits")
+Section3:NewToggle("Chidori Nagashi Spammer", "Charachter need to hold\nthe chidori nagashi if not then not work.", function(stateci)
+    if stateci then
+        _G.chispam = true
+      while wait() do
+      if _G.chispam == true then
+      game:GetService("Players").LocalPlayer.Character:FindFirstChild("Chidori Nagashi").RemoteEvent:FireServer()
+      end
+      end
+    else
+       _G.chispam = false
+    end
+end)
+pcall(function() 
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+            Text = "[Ninja Tycoon (v4.0)] 💎 GUI Loaded. By justXen#9690 💎";
+        Color = Color3.new(0, 1, 255);
+        }) 
+end)

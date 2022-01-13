@@ -172,6 +172,7 @@ local hatake_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoo
 local hatake_kapi = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hotate Clan"].PurchasedObjects.Gate
  hatake_bariyer:Destroy()
  hatake_kapi:Destroy()
+ end)
 local Tab3 = Window:NewTab("Remote Exploits")
 local Section3 = Tab3:NewSection("Exploits")
 Section3:NewToggle("Chidori Nagashi Spammer", "Charachter need to hold\nthe chidori nagashi if not then not work.", function(stateci)
@@ -191,5 +192,4 @@ pcall(function()
             Text = "[Ninja Tycoon (v4.0)] 💎 GUI Loaded. By justXen#9690 💎";
         Color = Color3.new(0, 1, 255);
         }) 
-end)
 end)

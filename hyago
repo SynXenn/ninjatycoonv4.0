@@ -1,6 +1,6 @@
+--UI Lib
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 ---team locals
-local hy_owner = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hyago Clan"].Owner
-local uchi_owner = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uchika Clan"].Owner
 wait(1)
 local plr = game.Players.LocalPlayer
 local plrname = game.Players.LocalPlayer.Name
@@ -33,8 +33,9 @@ end)
 
 
 ---------------------------------------------------------------
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28.391758, 171.855148, -320.624664, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+--Main
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28.391758, 171.855148, -320.624664, 0, 0, -1, 0, 1, 0, 1, 0, 0)
 local Window = Library.CreateLib("Ninja TycoonV4 [Hyago Clan]", "Sentinel")
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("Exploits")

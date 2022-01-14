@@ -30,15 +30,13 @@ OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
     
     return OldNameCall(Self, ...)
 end)
-
-
 ---------------------------------------------------------------
 --Main
 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28.391758, 171.855148, -320.624664, 0, 0, -1, 0, 1, 0, 1, 0, 0)
 local Window = Library.CreateLib("Ninja TycoonV4", "Sentinel")
-local Tab = Window:NewTab("Misc")
-local Section = Tab:NewSection("Exploits")
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Tycoon Exploits")
 Section:NewKeybind("UI Toggle", "Set keybind to toggle UI on/off", Enum.KeyCode.F1, function()
 	Library:ToggleUI()
 end)
@@ -70,7 +68,18 @@ Section:NewToggle("Auto Take Money", "Toggle Auto Take Money on/off", function(s
        _G.automoney = false
     end
 end)
-Section:NewToggle("Healer[OP]", "You need Tree(Heal) on your tycoon.Its basically like\ngod mode its regen your health in very short time.Toggle Healer on/off", function(stateee)
+Section:NewButton("[DONT RECCOMEND]Fire All TouchInterests", "Basically Fires All TouchInterests.Dont spam.", function()
+      for _,v in pairs(workspace:GetDescendants()) do
+if v:IsA("TouchTransmitter") then
+firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
+wait()
+firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
+end
+end
+end)
+local Tab4 = Window:NewTab("LocalPlayer")
+local Section4 = Tab4:NewSection("LocalPlayer Exploits")
+Section4:NewToggle("Healer [OP]", "You need Tree(Heal) on your tycoon.\nIts basically health regen", function(stateee)
     if stateee then
         _G.healer = true
       local healer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hyago Clan"].PurchasedObjects.Tree.HealingPad.TouchInterest
@@ -85,19 +94,57 @@ Section:NewToggle("Healer[OP]", "You need Tree(Heal) on your tycoon.Its basicall
        _G.healer = false
     end
 end)
-Section:NewButton("Teleport Base", "Teleports to base.", function()
- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(79.5542679, 180.655075, -352.40506, 0, 0, 1, 0, -1, 0, 1, 0, -0)
+Section4:NewToggle("Money Stealer [OP]", "You need Tree(Heal) on your tycoon.\nIts basically health regen", function(stateste)
+    if stateste then
+        _G.stealer = true
+      local uch_ste = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uchika Clan"].Essentials.Giver.TouchInterest
+      local aka_ste = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons.Akatsuke.Essentials.Giver.TouchInterest
+      local sen_ste = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Sonju Clan"].Essentials.Giver.TouchInterest
+      local kaze_ste = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Kazeka Clan"].Essentials.Giver.TouchInterest
+      local saru_ste = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Sarukobi Clan"].Essentials.Giver.TouchInterest
+      local ots_ste = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Otsutsushi Clan"].Essentials.Giver.TouchInterest
+      local uzu_ste = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Uzumonki Clan"].Essentials.Giver.TouchInterest
+      local hatake_ste = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons["Hotate Clan"].Essentials.Giver.TouchInterest
+      while wait() do
+      if _G.stealer == true then
+      local tycoonset = game:GetService("Workspace")["Zednov's Tycoon Kit"].Settings
+      a = require(tycoonset)
+      a.StealPercent = math.huge
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, aka_ste.Parent, 0) --0 is touch
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, sen_ste.Parent, 0)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, kaze_ste.Parent, 0)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, saru_ste.Parent, 0)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, ots_ste.Parent, 0)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, uzu_ste.Parent, 0)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, hatake_ste.Parent, 0)
+      wait()
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, aka_ste.Parent, 1) 
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, sen_ste.Parent, 1)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, kaze_ste.Parent, 1)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, saru_ste.Parent, 1)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, ots_ste.Parent, 1)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, uzu_ste.Parent, 1)
+      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, hatake_ste.Parent, 1)     
+      end
+      end
+    else
+       _G.stealer = false
+    end
 end)
-Section:NewSlider("WalkSpeed", "It changes your players walkspeed", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+Section4:NewButton("Teleport Base", "Teleports to base.", function()
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(79.5542679, 180.655075, -352.40506)
+end)
+Section4:NewSlider("WalkSpeed", "It changes your players walkspeed", 500, 30, function(s) -- 500 (MaxValue) | 0 (MinValue)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 end)
-Section:NewSlider("JumpPower", "It changes your players jump power", 500, 50, function(j) -- 500 (MaxValue) | 0 (MinValue)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = j
-end)
-Section:NewSlider("FOV", "It changes your players FOV", 120, 70, function(fw) -- 500 (MaxValue) | 0 (MinValue)
+Section4:NewSlider("FOV", "It changes your players FOV", 120, 70, function(fw) -- 500 (MaxValue) | 0 (MinValue)
     cam.FieldOfView = fw
 end)
-Section:NewToggle("AntiAFK", "Toggle AntiAFK on/off", function(state1)
+Section4:NewButton("Delete Invs Walls", "Deletes invisible walls.", function()
+ local inviswalls = game:GetService("Workspace").Map.InvisWall
+ inviswalls:Destroy()
+end)
+Section4:NewToggle("AntiAFK", "Toggle AntiAFK on/off", function(state1)
     if state1 then
         _G.antiafk = true
       while wait(1) do
@@ -115,18 +162,10 @@ Section:NewToggle("AntiAFK", "Toggle AntiAFK on/off", function(state1)
        print("AntiAfk off")
     end
 end)
-Section:NewButton("[DONT RECCOMEND]Fire All TouchInterests", "Basically Fires All TouchInterests.Dont spam.", function()
-      for _,v in pairs(workspace:GetDescendants()) do
-if v:IsA("TouchTransmitter") then
-firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
-wait()
-firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
-end
-end
-end)
+
 local Tab2 = Window:NewTab("Enemy Defence")
-local Section2 = Tab2:NewSection("Exploits")
-Section2:NewLabel("Warning! If the team you are trying to delete does\nnot have a barrier the button will not work.")
+local Section2 = Tab2:NewSection("Enemey Defence Exploits")
+Section2:NewLabel("Warning! If the team you are trying to delete does\nnot have a barrier/gate the button will not work.")
 Section2:NewButton("Delete Akatsuke Barrier", "Deletes sonju team`s barrier.", function()
 local aka_bariyer = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons.Akatsuke.PurchasedObjects["Roof Barrier Jutsu"].Lasers
  aka_bariyer:Destroy()
@@ -192,7 +231,7 @@ local hatake_kapi = game:GetService("Workspace")["Zednov's Tycoon Kit"].Tycoons[
  hatake_kapi:Destroy()
  end)
 local Tab3 = Window:NewTab("Remote Exploits")
-local Section3 = Tab3:NewSection("Exploits")
+local Section3 = Tab3:NewSection("Remote Exploits")
 Section3:NewToggle("Chidori Nagashi Spammer", "Charachter need to hold\nthe chidori nagashi if not then not work.", function(stateci)
     if stateci then
         _G.chispam = true
